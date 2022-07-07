@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: poppins;
+}
+.nav-button {
+  color: white;
+  background-color: orangered;
+  border-radius: 20px;
+  height: 40px;
+  width: 100px;
+  border: 0px;
+}
+.social-login {
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+.social-logo {
+  list-style: none;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+}
+.social-list {
+  margin: 0 4px;
+}
+.social-list img {
+  width: 45px;
+}
+.login-selector {
+  width: 233px;
+}
+.nav-tabs .nav-link.active {
+  background-color: orangered !important;
+  border-radius: 10px;
+  color: white !important;
+  border-color: orangered;
+}
+.signup-tab {
+  padding: 0 3rem;
+}
+.signin-link {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.model-text {
+  color: grey;
+  font-size: 14px;
+  text-align: center;
+}
+.model-button {
+  color: white;
+  background-color: orangered;
+  border-radius: 10px;
+  height: 40px;
+  width: 370px;
+  border: 0px;
+}
+#name-error {
+  display: none;
+  color: orangered;
+}
+#email-error {
+  display: none;
+  color: orangered;
+}
+#password-error {
+  display: none;
+  color: orangered;
+}
+.profile-button {
+  color: black;
+  font-size: 20px;
+  /* font-weight: 500; */
+  border: 1px solid orangered !important;
+  border-radius: 50%;
+  background-color: #faece6;
+  height: 60px;
+  width: 60px;
+  border: 0px;
+  text-align: center;
+}
+.profile-button:hover {
+  background-color: orangered;
+  color: white;
+}
+.home-container {
+  margin-top: 200px;
+  text-align: center;
+}
+.home-head {
+  font-size: 72px;
+  font-weight: 600;
+}
