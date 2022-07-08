@@ -4,25 +4,33 @@ if (isset($_POST['signup'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $checkInput = "SELECT * FROM user_credential WHERE email = '$email'";
-  mysqli_report(MYSQLI_REPORT_STRICT);
-  $checkInputQuery = mysqli_query($conn, $checkInput);
-  if (mysqli_num_rows($checkInputQuery) > 0) {
-    // header('Location: signup.php?error=taken');
-    $email_taken = true;
-    echo "email taken";
-    die();
-  } else {
-    $fetch_letter = substr($name, 0, 1);
-    $_SESSION['username'] = strtoupper($fetch_letter);
-    $secure_password = password_hash($password, PASSWORD_DEFAULT);
-    $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
-    $query_run = mysqli_query($conn, $query);
-    if ($query_run) {
-      header('Location: index.php?info=signup');
+  if (!empty($email) && !empty($password)) {
+    $checkInput = "SELECT * FROM user_credential WHERE email = '$email'";
+    mysqli_report(MYSQLI_REPORT_STRICT);
+    $checkInputQuery = mysqli_query($conn, $checkInput);
+    if (mysqli_num_rows($checkInputQuery) > 0) {
+      // header('Location: signup.php?error=taken');
+      $email_taken = true;
+      echo "email taken";
+      die();
     } else {
-      echo "error";
+      $fetch_letter = substr($name, 0, 1);
+      $_SESSION['username'] = strtoupper($fetch_letter);
+      $secure_password = password_hash($password, PASSWORD_DEFAULT);
+      $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
+      $query_run = mysqli_query($conn, $query);
+      if ($query_run) {
+        header('Location: index.php?info=signup');
+      } else {
+        echo "error";
+      }
     }
+  } else {
+    echo "<script type='text/javascript'>
+    // $('#exampleModal').modal();
+      </script>";
+
+    // header("Location:index.html/")
   }
 }
 ?>
