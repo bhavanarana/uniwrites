@@ -4,14 +4,12 @@ if (isset($_POST['signup'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
-  if (!empty($email) && !empty($password)) {
+  if (!empty($email) || !empty($password)) {
     $checkInput = "SELECT * FROM user_credential WHERE email = '$email'";
     mysqli_report(MYSQLI_REPORT_STRICT);
     $checkInputQuery = mysqli_query($conn, $checkInput);
     if (mysqli_num_rows($checkInputQuery) > 0) {
-      // header('Location: signup.php?error=taken');
-      $email_taken = true;
-      echo "email taken";
+      header('Location: index.php?empty=taken');
       die();
     } else {
       $fetch_letter = substr($name, 0, 1);
@@ -21,19 +19,17 @@ if (isset($_POST['signup'])) {
       $query_run = mysqli_query($conn, $query);
       if ($query_run) {
         header('Location: index.php?info=signup');
+        die();
       } else {
         echo "error";
       }
     }
   } else {
-    echo "<script type='text/javascript'>
-    // $('#exampleModal').modal();
-      </script>";
-
-    // header("Location:index.html/")
+    header("Location:index.php?empty=empty_field");
   }
 }
 ?>
+
 <div class="modal fade" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -50,8 +46,17 @@ if (isset($_POST['signup'])) {
             <button class="nav-link login-selector" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign In</button>
           </li>
         </ul>
-        <?php if ($email_taken == true) { ?>
-          mail taken
+        <?php if (isset($_REQUEST['empty'])) { ?>
+          <?php if ($_REQUEST['empty'] == 'empty_field') { ?>
+            <div class="alert alert-danger mt-3" role="alert">
+              Fill the empty fields
+            </div>
+          <?php } ?>
+          <?php if ($_REQUEST['empty'] == 'taken') { ?>
+            <div class="alert alert-danger mt-3" role="alert">
+              Email already taken
+            </div>
+          <?php } ?>
         <?php } ?>
         <div class="social-login">
           <p class="model-text">Login with your social network</pc>

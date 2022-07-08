@@ -22,6 +22,13 @@
     <?php } else { ?>
       <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="mt-5 nav-button col-2">Get Started</button>
     <?php } ?>
+    <?php if (isset($_REQUEST['empty'])) { ?>
+      <script>
+        $(document).ready(function() {
+          $('#exampleModal').modal('show');
+        });
+      </script>
+    <?php } ?>
   </div>
 </body>
 
