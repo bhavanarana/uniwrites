@@ -1,5 +1,7 @@
 <?php
 include "db.php";
+
+// Sign up
 if (isset($_POST['signup'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -12,8 +14,7 @@ if (isset($_POST['signup'])) {
       header('Location: index.php?empty=taken');
       die();
     } else {
-      $fetch_letter = substr($name, 0, 1);
-      $_SESSION['username'] = strtoupper($fetch_letter);
+
       $secure_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
       $query_run = mysqli_query($conn, $query);
@@ -26,6 +27,25 @@ if (isset($_POST['signup'])) {
     }
   } else {
     header("Location:index.php?empty=empty_field");
+  }
+}
+
+// Sign in
+if (isset($_REQUEST['signin'])) {
+  $email = $_REQUEST['email'];
+  $password = $_REQUEST['password'];
+  $query = "SELECT * FROM user_credential WHERE email='$email'";
+  $select_query = mysqli_query($conn, $query);
+  foreach ($select_query as $value) {
+    $match_password = password_verify($password, $value['password']);
+    if ($match_password) {
+      $_SESSION['username'] = $value['name'];
+      $_SESSION['user_id'] = $value['id'];
+      $fetch_letter = substr($_SESSION['username'], 0, 1);
+      $_SESSION['username'] = strtoupper($fetch_letter);
+      header('Location: add.php');
+      exit();
+    }
   }
 }
 ?>
@@ -89,12 +109,12 @@ if (isset($_POST['signup'])) {
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <form>
               <div class="mb-3">
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                <input type="email" class="form-control" name="email" id=" exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
               </div>
               <div class="mb-3">
-                <input type="password" class="form-control password-input" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control password-input" name="password" id="exampleInputPassword1" placeholder="Password">
               </div>
-              <button type="submit" class="model-button">Submit</button>
+              <button type="submit" name="signin" class="model-button">Submit</button>
               <p class="signin-link model-text">Don't have an account? <a href="#">Sign Up</a></p>
             </form>
           </div>
