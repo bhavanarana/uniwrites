@@ -19,7 +19,7 @@ if (isset($_POST['signup'])) {
       $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
       $query_run = mysqli_query($conn, $query);
       if ($query_run) {
-        header('Location: index.php?info=signup');
+        header('Location: index.php');
         die();
       } else {
         echo "error";
