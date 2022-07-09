@@ -51,7 +51,9 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-  <?php include 'nav.php'; ?>
+  <?php
+  include 'nav.php';
+  ?>
   <?php if (isset($_REQUEST['error'])) { ?>
     <?php if ($_REQUEST['error'] == 'size') { ?>
       <!--alert box-->

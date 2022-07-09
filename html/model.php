@@ -1,6 +1,6 @@
 <?php
+session_start();
 include "db.php";
-
 // Sign up
 if (isset($_POST['signup'])) {
   $name = $_POST['name'];
@@ -19,7 +19,7 @@ if (isset($_POST['signup'])) {
       $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
       $query_run = mysqli_query($conn, $query);
       if ($query_run) {
-        header('Location: index.php');
+        header('Location: index.php?info=signup');
         die();
       } else {
         echo "error";
@@ -39,12 +39,12 @@ if (isset($_REQUEST['signin'])) {
   foreach ($select_query as $value) {
     $match_password = password_verify($password, $value['password']);
     if ($match_password) {
-      $_SESSION['username'] = $value['name'];
+      $_SESSION['username'] = $value['username'];
       $_SESSION['user_id'] = $value['id'];
       $fetch_letter = substr($_SESSION['username'], 0, 1);
-      $_SESSION['username'] = strtoupper($fetch_letter);
-      header('Location: add.php');
-      exit();
+      $_SESSION['letter'] = strtoupper($fetch_letter);
+      header('Location: index.php');
+      die();
     }
   }
 }
