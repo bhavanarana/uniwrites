@@ -89,7 +89,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" class="desc" name="desc" rows="3"></textarea>
+        <textarea class="form-control" class="desc" id="text-desc" name="desc" rows="6"></textarea>
       </div>
       <div class="mb-3">
         <label for="Image_thumb" class="form-label">Upload Image</label>

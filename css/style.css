@@ -122,3 +122,6 @@ body{
   top:45%;
   opacity:0.6;
 }
+#text-desc{
+  width:800px !important;
+}
