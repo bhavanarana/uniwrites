@@ -80,12 +80,12 @@ if (isset($_POST['submit'])) {
       </div>
     <?php } ?>
   <?php } ?>
-  <div class="container add-container">
+  <div class="container add-container mt-5">
     <form action="" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <h1 class="add-heading">Add Your Blog</h1>
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" class="title">
+        <label for="title" class="form-label mt-3">Title</label>
+        <input type="text" class="form-control" name="title" id="title_focus" class="title">
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
@@ -98,7 +98,9 @@ if (isset($_POST['submit'])) {
       </div>
     </form>
   </div>
-
+  <script>
+    $("#title_focus").focus();
+  </script>
 </body>
 
 </html>
