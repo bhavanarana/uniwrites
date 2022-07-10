@@ -27,6 +27,7 @@ if (isset($_POST['signup'])) {
     }
   } else {
     header("Location:index.php?empty=empty_field");
+    die();
   }
 }
 
@@ -102,7 +103,7 @@ if (isset($_REQUEST['signin'])) {
                 <input type="password" name="password" class="form-control password-input" id="password" placeholder="Password">
                 <small id="password-error">Error Message</small>
               </div>
-              <button type="submit" name="signup" class="model-button" id="signup-button">Submit</button>
+              <button type="submit" name="signup" class="model-button" id="signup-button" disabled>Submit</button>
               <p class="signin-link model-text">Already have an account? <a href="#">Sign In</a></p>
             </form>
           </div>

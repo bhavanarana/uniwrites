@@ -125,3 +125,8 @@ body{
 #text-desc{
   width:800px !important;
 }
+button:disabled,
+button[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+}
