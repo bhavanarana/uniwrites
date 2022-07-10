@@ -10,6 +10,7 @@
   });
 
   function checkValidation() {
+    var isInvalid = true;
     let nameValue = name.value.trim();
     let emailValue = email.value.trim();
     let passwordValue = password.value.trim();
@@ -17,23 +18,35 @@
     if (nameValue == "" || nameValue == null) {
       document.getElementById('name-error').style.display = 'block';
       document.getElementById('name-error').innerText = "Name Cannot be blank";
+      isInvalid = false;
     } else {
       document.getElementById('name-error').style.display = 'none';
     }
     if (emailValue == "" || emailValue == null) {
       document.getElementById('email-error').style.display = 'block';
       document.getElementById('email-error').innerText = "Email Cannot be blank";
+      isInvalid = false;
     } else if (!emailValidate.test(emailValue)) {
       document.getElementById('email-error').style.display = 'block';
       document.getElementById('email-error').innerText = "Please Enter a Valid email";
+      isInvalid = false;
     } else {
       document.getElementById('email-error').style.display = 'none';
     }
     if (passwordValue == "" || passwordValue == null) {
       document.getElementById('password-error').style.display = 'block';
       document.getElementById('password-error').innerText = "Password Cannot be blank";
+      isInvalid = false;
+      // console.log(passInput);
+
     } else {
       document.getElementById('password-error').style.display = 'none';
+      // console.log(passInput);
+    }
+    if (isInvalid === true) {
+      button.disabled = false;
+    } else {
+      button.disabled = true;
     }
   }
 </script>
