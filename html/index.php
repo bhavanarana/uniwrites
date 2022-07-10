@@ -25,7 +25,7 @@ include "db.php";
     <?php if (!empty($_SESSION['username'])) { ?>
       <button class="mt-5 nav-button col-2">Welcome</button>
     <?php } else { ?>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="mt-5 nav-button col-2">Get Started</button>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="mt-5 nav-button col-2">Sign In / Sign Up</button>
     <?php } ?>
     <?php if (isset($_REQUEST['empty'])) { ?>
       <script>
