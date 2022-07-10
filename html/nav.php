@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-light navbar-new">
   <div class="container">
     <a class="navbar-brand nav-brand" href="index.php">
@@ -18,22 +20,23 @@
         <li class="nav-item nav-services">
           <a class="nav-link active ms-4" aria-current="page" href="#services">About Us</a>
         </li>
-        <?php if (isset($_REQUEST['info'])) { ?>
-          <?php if ($_REQUEST['info'] == 'signup') { ?>
-            <li>
-              <div class="dropdown ms-4">
-                <button class="profile-button dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <?php echo $_SESSION['username'] ?>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">View your Blogs</a></li>
-                  <li><a class="dropdown-item" href="add.php">Add your Blogs</a></li>
-                  <li><a class="dropdown-item" href="index.php">Logout</a></li>
-                </ul>
-              </div>
-            </li>
-          <?php } ?>
-
+        <?php if (!empty($_SESSION['username'])) { ?>
+          <li>
+            <div class="dropdown ms-4">
+              <button class="profile-button dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $_SESSION['letter'] ?>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">View your Blogs</a></li>
+                <li><a class="dropdown-item" href="add.php">Add your Blogs</a></li>
+                <li><a class="dropdown-item" href="#">
+                    <form method="POST">
+                      <input type="submit" name="logout" value="Logout" class="btn btn-danger">
+                    </form>
+                  </a></li>
+              </ul>
+            </div>
+          </li>
         <?php } else { ?>
           <li class="nav-item nav-services">
             <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="ms-4 nav-button">Sign Up</button>
