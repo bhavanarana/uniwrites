@@ -72,17 +72,19 @@ if (isset($_REQUEST['id'])) {
                 <div class="card-body">
                   <!-- <div class="d-flex justify-content-between"> -->
                   <?php if ($_SESSION['user_id'] == $value['user_id']) { ?>
-                    <p class="d-flex float-end">
-                      <a href="edit.php?id=<?php echo $value['user_id'] ?>" class="edit-delete-link">
-                        <ion-icon name="create"></ion-icon>
-                      </a>
-                    <form method="POST">
-                      <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
-                      <a href="view.php?id=<?php echo $value['id'] ?>" class="edit-delete-link">
-                        <ion-icon name="trash"></ion-icon>
-                      </a>
-                    </form>
-                    </p>
+                    <div class="wrapper" style="margin-top: -15px;">
+                      <p class="d-flex float-end">
+                        <a href="edit.php?id=<?php echo $value['id'] ?>" class="edit-delete-link">
+                          <ion-icon name="create"></ion-icon>
+                        </a>
+                      <form method="POST">
+                        <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
+                        <a href="view.php?id=<?php echo $value['id'] ?>" class="edit-delete-link float-end">
+                          <ion-icon name="trash"></ion-icon>
+                        </a>
+                      </form>
+                      </p>
+                    </div>
                   <?php } ?>
                   <!-- </div> -->
                   <h5 class="card-title"><?php echo $value['title'] ?></h5>
