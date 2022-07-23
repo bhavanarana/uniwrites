@@ -27,6 +27,13 @@ include "db.php";
     <?php } else { ?>
       <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="mt-5 nav-button col-2">Sign In / Sign Up</button>
     <?php } ?>
+    <?php if (isset($_REQUEST['info'])) { ?>
+      <?php if ($_REQUEST['info'] = 'signup') { ?>
+        <div class="signup-success alert alert-success mt-3" role="alert">
+          Successfully Registered!
+        </div>
+      <?php } ?>
+    <?php } ?>
     <?php if (isset($_REQUEST['empty']) || isset($_REQUEST['error'])) { ?>
       <script>
         $(document).ready(function() {
