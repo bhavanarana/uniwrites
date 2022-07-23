@@ -115,7 +115,7 @@ if (isset($_REQUEST['signin'])) {
             </form>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <form>
+            <form method="POST" id="signin-form">
               <div class="mb-3">
                 <input type="email" class="form-control" name="email" id=" exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
               </div>
