@@ -47,54 +47,64 @@ if (!$query_select) {
         </div>
       <?php } ?>
     <?php } ?>
-    <div class="container">
+    <div class="row">
       <?php foreach ($query_select as $value) { ?>
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <?php if ($value['image_url'] != null) { ?>
-                <img class="view-img mt-3" src="../uploads/<?php echo $value['image_url'] ?>" class="img-fluid rounded-start">
-              <?php } ?>
-              <?php if ($value['image_url'] == null) { ?>
-                <img class="view-img mt-3" src="../default.png" class="img-fluid rounded-start">
-              <?php  } ?>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $value['title'] ?></h5>
-                <p class="card-text"><?php echo $value['excerpt'] ?></p>
-                <div class="d-flex justify-content-between">
-                  <p class="card-text"><small class="text-muted">
-                      <?php
-                      $timestamp = $value['timestamp'];
-                      $datetime = explode(" ", $timestamp);
-                      $date = $datetime[0];
-                      $date_format = date('F j, Y', strtotime($date)); //used for changing date format
-                      // print_r($date_format);
-                      echo $date_format;
-                      ?>
-                    </small></p>
+        <div class="col-lg-6 " style="max-width: 680px;">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <?php if ($value['image_url'] != null) { ?>
+                  <img class="view-img" src="../uploads/<?php echo $value['image_url'] ?>" class="img-fluid rounded-start">
+                <?php } ?>
+                <?php if ($value['image_url'] == null) { ?>
+                  <img class="view-img" src="../default.png" class="img-fluid rounded-start">
+                <?php  } ?>
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <!-- <div class="d-flex justify-content-between"> -->
                   <?php if ($_SESSION['user_id'] == $value['user_id']) { ?>
-                    <p class="card-text">
-                      <small class="test-muted">
-                        <a href="#" class="edit-delete-link">
-                          <ion-icon name="create"></ion-icon>
-                        </a>
-                        <a href="#" class="edit-delete-link">
-                          <ion-icon name="trash"></ion-icon>
-                        </a>
-                      </small>
+                    <p class="d-flex float-end">
+                      <a href="#" class="edit-delete-link">
+                        <ion-icon name="create"></ion-icon>
+                      </a>
+                      <a href="#" class="edit-delete-link">
+                        <ion-icon name="trash"></ion-icon>
+                      </a>
                     </p>
                   <?php } ?>
+                  <!-- </div> -->
+                  <h5 class="card-title"><?php echo $value['title'] ?></h5>
+                  <p class="card-text"><?php echo $value['excerpt'] ?></p>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text"><small class="text-muted">
+                        <?php
+                        $timestamp = $value['timestamp'];
+                        $datetime = explode(" ", $timestamp);
+                        $date = $datetime[0];
+                        $date_format = date('F j, Y', strtotime($date)); //used for changing date format
+                        // print_r($date_format);
+                        echo $date_format;
+                        ?>
+                      </small></p>
+
+                    <p>
+                      <!-- <small class="test-muted"> -->
+                      <a href="#" class="edit-delete-link">
+                        <span class="view-icon-size">
+                          <ion-icon size="large" name="open"></ion-icon>
+                        </span>
+                      </a>
+                      <!-- </small> -->
+                    </p>
+                  </div>
                 </div>
-                <a href="viewblog.php?id=<?php echo $value['id']; ?>" class="btn btn-primary view-button mt-auto">Read</a>
               </div>
             </div>
           </div>
         </div>
+      <?php } ?>
     </div>
-  <?php } ?>
-  </div>
 </body>
 
 </html>

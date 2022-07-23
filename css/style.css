@@ -128,9 +128,12 @@ button[disabled] {
   color: #666666;
 }
 .view-img {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 110px;
+  margin-top: 20px;
   margin-left: 20px;
+
+  /* padding: 100px; */
   /* margin-top:; */
 }
 .edit-delete-link {
@@ -139,4 +142,15 @@ button[disabled] {
 }
 .edit-delete-link :hover {
   color: orangered;
+}
+.view-icon-size {
+  width: 100px !important;
+}
+ion-icon {
+  /* width: 400px; */
+  font-size: 22px;
+}
+.view-heading {
+  text-align: center;
+  margin-top: 50px !important;
 }
