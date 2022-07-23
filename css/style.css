@@ -38,6 +38,15 @@ body {
 .login-selector {
   width: 233px;
 }
+.add-heading{
+  font-weight:600;
+  font-size:48px;
+  text-align: center;
+  background: -webkit-linear-gradient(top left, #ec08ee, #08bef0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
 .nav-tabs .nav-link.active {
   background-color: orangered !important;
   border-radius: 10px;
@@ -131,4 +140,31 @@ button[disabled] {
   width:300px;
   margin:0 auto;
   border-radius:10px !important;
+}
+.add-container{
+width:750px ;
+margin:0 auto;
+}
+.input-headers{
+  font-weight:500;
+  font-size:18px;
+}
+.input-fields{
+  background: #FFFFFF;
+  box-shadow: 3px 4px 10px rgba(135, 135, 135, 0.25);
+  border-radius: 10px;
+
+}
+
+.input-height{
+  height:50px;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  outline:none !important;
+}
+.input-header-div{
+  font-weight: 400;
+  font-size:14px;
 }

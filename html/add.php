@@ -82,30 +82,41 @@ if (isset($_POST['submit'])) {
     <?php } ?>
   <?php } ?>
   <div class="container add-container mt-5">
-    <form action="" method="POST" enctype="multipart/form-data">
-      <div class="mb-3">
-        <h1 class="add-heading">Add Your Blog</h1>
-        <label for="title" class="form-label mt-3">Title</label>
-        <input type="text" class="form-control" name="title" id="title_focus" class="title" required>
-      </div>
-      <div class="mb-3">
-        <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" id="text-desc" name="desc" rows="5" cols="50" required></textarea>
-      </div>
+    <div class="add-container">
+      <form action="" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <h1 class="add-heading">Add Your Blog</h1>
+          <label for="title" class="form-label input-headers mt-3">Title</label>
+          <input type="text" class="form-control input-fields input-height" name="title" id="title_focus" class="title" required>
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label input-headers">Description</label>
+          <textarea class="form-control input-fields" id="text-desc" name="desc" rows="6" cols="50" required></textarea>
+        </div>
 
-      <div class="mb-3">
-        <label for="excerpt" class="form-label">Excerpt</label>
-        <textarea class="form-control" id="text-desc" name="excerpt" rows="2" cols="50" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="Image_thumb" class="form-label">Upload Image</label>
-        <input type="file" class="form-control" name="image_thumb" class="title">
-        <input type="submit" class="btn btn-primary button mt-4" name="submit" value="+Create blog">
-      </div>
-    </form>
+        <div class="mb-3">
+          <label for="excerpt" class="form-label input-headers">Excerpt<span class="input-header-div"> (Max characters:150)</span></label>
+          <textarea class="form-control input-fields" id="text-desc" name="excerpt" rows="2" cols="50" onkeyup="limit(this);" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="Image_thumb" class="form-label input-headers">Upload Image</label>
+          <input type="file" class="form-control input-fields" name="image_thumb" class="title">
+          <!-- <input type="submit" class=" nav-button col-3 mt-5 btn-secondary" name="submit" value="Cancel"> -->
+          <input type="submit" class=" nav-button col-3 mt-5 float-end" name="submit" value="Create blog">
+        </div>
+      </form>
+    </div>
   </div>
   <script>
     $("#title_focus").focus();
+
+    function limit(element) {
+      var max_chars = 100;
+
+      if (element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+      }
+    }
   </script>
 </body>
 
