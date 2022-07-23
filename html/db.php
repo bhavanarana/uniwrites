@@ -3,7 +3,7 @@ $host = 'localhost';
 $username = 'root';
 $password = '';
 $db = 'uniwrites';
-$conn = mysqli_connect($host, $username, $password, $db);
+$conn = mysqli_connect($host, $username, $password, $db, 3307);
 if (!$conn) {
   die('failed' . mysqli_connect_error());
 }
