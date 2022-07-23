@@ -14,7 +14,6 @@ if (isset($_POST['signup'])) {
       header('Location: index.php?empty=taken');
       die();
     } else {
-
       $secure_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
       $query_run = mysqli_query($conn, $query);
