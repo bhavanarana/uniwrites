@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $disc = $_POST['desc'];
     $description = mysqli_real_escape_string($conn, $disc);
+    $excerpt = $_POST['excerpt'];
     $img = $_FILES['image_thumb']; //access image
     $img_size = $img['size']; // image size
     $img_name = $img['name']; // acess name of image
@@ -89,7 +90,12 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" class="desc" id="text-desc" name="desc" rows="6"></textarea>
+        <textarea class="form-control" id="text-desc" name="desc" rows="5" cols="50"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="excerpt" class="form-label">Excerpt</label>
+        <textarea class="form-control" id="text-desc" name="excerpt" rows="2" cols="50"></textarea>
       </div>
       <div class="mb-3">
         <label for="Image_thumb" class="form-label">Upload Image</label>
