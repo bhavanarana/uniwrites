@@ -15,7 +15,7 @@ session_start();
           <a class="nav-link active ms-4" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item nav-about">
-          <a class="nav-link active ms-4" aria-current="page" href="#">Blog</a>
+          <a class="nav-link active ms-4" aria-current="page" href="view.php">Blog</a>
         </li>
         <li class="nav-item nav-services">
           <a class="nav-link active ms-4" aria-current="page" href="#services">About Us</a>
