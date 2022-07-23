@@ -14,7 +14,6 @@ if (isset($_POST['signup'])) {
       header('Location: index.php?empty=taken');
       die();
     } else {
-
       $secure_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO user_credential(username, email, password) VALUES ('$name','$email','$secure_password')";
       $query_run = mysqli_query($conn, $query);
@@ -46,6 +45,9 @@ if (isset($_REQUEST['signin'])) {
       $_SESSION['letter'] = strtoupper($fetch_letter);
       header('Location: index.php');
       die();
+    } else {
+      header('Location: index.php?error=password');
+      die();
     }
   }
 }
@@ -67,7 +69,7 @@ if (isset($_REQUEST['signin'])) {
             <button class="nav-link login-selector" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign In</button>
           </li>
         </ul>
-        <?php if (isset($_REQUEST['empty'])) { ?>
+        <?php if (isset($_REQUEST['empty']) || isset($_REQUEST['error'])) { ?>
           <?php if ($_REQUEST['empty'] == 'empty_field') { ?>
             <div class="alert alert-danger mt-3" role="alert">
               Fill the empty fields
@@ -76,6 +78,11 @@ if (isset($_REQUEST['signin'])) {
           <?php if ($_REQUEST['empty'] == 'taken') { ?>
             <div class="alert alert-danger mt-3" role="alert">
               Email already taken
+            </div>
+          <?php } ?>
+          <?php if ($_REQUEST['error'] == 'password') { ?>
+            <div class="alert alert-danger mt-3" role="alert">
+              Wrong Email or Password
             </div>
           <?php } ?>
         <?php } ?>
