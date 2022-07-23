@@ -6,6 +6,14 @@ $query_select = mysqli_query($conn, $select);
 if (!$query_select) {
   echo 'Failed to fetch details';
 }
+if (isset($_REQUEST['id'])) {
+  $id = $_REQUEST['id'];
+  $update = "UPDATE entries SET delete_status = '1' WHERE id = '$id'";
+  $update_query = mysqli_query($conn, $update);
+  if ($update_query) {
+    header("Location: view.php?result=deleted");
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,14 +72,19 @@ if (!$query_select) {
                 <div class="card-body">
                   <!-- <div class="d-flex justify-content-between"> -->
                   <?php if ($_SESSION['user_id'] == $value['user_id']) { ?>
-                    <p class="d-flex float-end">
-                      <a href="#" class="edit-delete-link">
-                        <ion-icon name="create"></ion-icon>
-                      </a>
-                      <a href="#" class="edit-delete-link">
-                        <ion-icon name="trash"></ion-icon>
-                      </a>
-                    </p>
+                    <div class="wrapper" style="margin-top: -15px;">
+                      <p class="d-flex float-end">
+                        <a href="edit.php?id=<?php echo $value['id'] ?>" class="edit-delete-link">
+                          <ion-icon name="create"></ion-icon>
+                        </a>
+                      <form method="POST">
+                        <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
+                        <a href="view.php?id=<?php echo $value['id'] ?>" class="edit-delete-link float-end">
+                          <ion-icon name="trash"></ion-icon>
+                        </a>
+                      </form>
+                      </p>
+                    </div>
                   <?php } ?>
                   <!-- </div> -->
                   <h5 class="card-title"><?php echo $value['title'] ?></h5>
@@ -90,10 +103,8 @@ if (!$query_select) {
 
                     <p>
                       <!-- <small class="test-muted"> -->
-                      <a href="#" class="edit-delete-link">
-                        <span class="view-icon-size">
-                          <ion-icon size="large" name="open"></ion-icon>
-                        </span>
+                      <a href="openblog.php" class="edit-delete-link">
+                        <ion-icon size="large" name="arrow-round-forward"></ion-icon>
                       </a>
                       <!-- </small> -->
                     </p>
