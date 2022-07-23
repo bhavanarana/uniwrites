@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $disc = $_POST['desc'];
     $description = mysqli_real_escape_string($conn, $disc);
+    $excerpt = $_POST['excerpt'];
     $img = $_FILES['image_thumb']; //access image
     $img_size = $img['size']; // image size
     $img_name = $img['name']; // acess name of image
@@ -31,7 +32,7 @@ if (isset($_POST['submit'])) {
       $unique_name = NULL;
     }
     $user_id = $_SESSION['user_id'];
-    $query = "INSERT INTO entries (image_url, title, description, user_id) VALUES ('$unique_name','$title','$description', '$user_id')";
+    $query = "INSERT INTO entries (image_url, title, description, excerpt, user_id) VALUES ('$unique_name','$title','$description', '$excerpt', '$user_id')";
     $query_insert = mysqli_query($conn, $query);
     if ($query_insert) {
       //echo '<h1>You have Successfully Submitted</h1>';
@@ -85,11 +86,16 @@ if (isset($_POST['submit'])) {
       <div class="mb-3">
         <h1 class="add-heading">Add Your Blog</h1>
         <label for="title" class="form-label mt-3">Title</label>
-        <input type="text" class="form-control" name="title" id="title_focus" class="title">
+        <input type="text" class="form-control" name="title" id="title_focus" class="title" required>
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" class="desc" id="text-desc" name="desc" rows="6"></textarea>
+        <textarea class="form-control" id="text-desc" name="desc" rows="5" cols="50" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="excerpt" class="form-label">Excerpt</label>
+        <textarea class="form-control" id="text-desc" name="excerpt" rows="2" cols="50" required></textarea>
       </div>
       <div class="mb-3">
         <label for="Image_thumb" class="form-label">Upload Image</label>
