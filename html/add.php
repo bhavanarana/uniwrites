@@ -85,15 +85,15 @@ if (isset($_POST['submit'])) {
       <div class="mb-3">
         <h1 class="add-heading">Add Your Blog</h1>
         <label for="title" class="form-label mt-3">Title</label>
-        <input type="text" class="form-control" name="title" id="title_focus" class="title">
+        <input type="text" class="form-control" name="title" id="title_focus" class="title" required>
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
-        <textarea class="form-control" class="desc" id="text-desc" name="desc" rows="6"></textarea>
+        <textarea class="form-control" class="desc" id="text-desc" name="desc" rows="5" cols="500" required></textarea>
       </div>
       <div class="mb-3">
         <label for="Image_thumb" class="form-label">Upload Image</label>
-        <input type="file" class="form-control" name="image_thumb" class="title">
+        <input type="file" class="form-control" name="image_thumb" class="title" required>
         <input type="submit" class="btn btn-primary button mt-4" name="submit" value="+Create blog">
       </div>
     </form>
