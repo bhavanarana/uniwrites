@@ -127,3 +127,16 @@ button[disabled] {
   background-color: #cccccc;
   color: #666666;
 }
+.view-img {
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+  /* margin-top:; */
+}
+.edit-delete-link {
+  text-decoration: none;
+  color: grey;
+}
+.edit-delete-link :hover {
+  color: orangered;
+}
