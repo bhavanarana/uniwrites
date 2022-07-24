@@ -8,13 +8,13 @@ include "db.php";
 <head>
   <?php include "bootstrap.php";
   ?>
-  <title>Portfolio</title>
+  <title>UniWrites</title>
 </head>
 
 <body>
   <?php
   include "nav.php";
-  include "script.php"; ?>
+  ?>
   <div class="container home-container">
     <img src="../icons/blob_1.svg" alt="" class="blob_1">
     <img src="../icons/blob_2.svg" alt="" class="blob_2">

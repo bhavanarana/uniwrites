@@ -99,28 +99,25 @@ if (isset($_REQUEST['signin'])) {
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <form method="POST" id="signup-form">
               <div class="mb-3">
-                <input type="text" name="name" class="form-control" id="name" aria-describedby="textHelp" placeholder="Username">
-                <small id="name-error">Error Message</small>
+                <input type="text" name="name" class="form-control" id="name" aria-describedby="textHelp" placeholder="Username" required>
               </div>
               <div class="mb-3">
-                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
-                <small id="email-error">Error Message</small>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" required>
               </div>
               <div class="mb-3">
-                <input type="password" name="password" class="form-control password-input" id="password" placeholder="Password">
-                <small id="password-error">Error Message</small>
+                <input type="password" name="password" class="form-control password-input" id="password" placeholder="Password" required>
               </div>
-              <button type="submit" name="signup" class="model-button" id="signup-button" disabled>Submit</button>
+              <button type="submit" name="signup" class="model-button" id="signup-button">Submit</button>
               <p class="signin-link model-text">Already have an account? <a href="#">Sign In</a></p>
             </form>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <form method="POST" id="signin-form">
               <div class="mb-3">
-                <input type="email" class="form-control" name="email" id=" exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                <input type="email" class="form-control" name="email" id=" exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" required>
               </div>
               <div class="mb-3">
-                <input type="password" class="form-control password-input" name="password" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control password-input" name="password" id="exampleInputPassword1" placeholder="Password" required>
               </div>
               <button type="submit" name="signin" class="model-button">Submit</button>
               <p class="signin-link model-text">Don't have an account? <a href="#">Sign Up</a></p>
