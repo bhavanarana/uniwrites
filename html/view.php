@@ -80,9 +80,9 @@ if (isset($_REQUEST['id'])) {
                       <form method="POST">
                         <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
                         <a href="view.php?id=<?php echo $value['id'] ?>" class="edit-delete-link float-end">
-                          <!-- <span data-toggle="modal" data-target="#exampleModalCenter"> -->
-                          <ion-icon name="trash"></ion-icon>
-                          <!-- </span> -->
+                          <span data-toggle="modal" data-target="#exampleModalCenter">
+                            <ion-icon name="trash"></ion-icon>
+                          </span>
                         </a>
                       </form>
                       </p>
@@ -105,7 +105,7 @@ if (isset($_REQUEST['id'])) {
                     <p>
                       <!-- <small class="test-muted"> -->
 
-                      <a href="openblog.php?id=<?php echo $value['id']; ?>" class="edit-delete-link">
+                      <a onClick="confirm()" href="openblog.php?id=<?php echo $value['id']; ?>" class="edit-delete-link">
                         <ion-icon size="large" name="arrow-round-forward"></ion-icon>
                       </a>
                       <!-- </small> -->
@@ -118,6 +118,26 @@ if (isset($_REQUEST['id'])) {
         </div>
       <?php } ?>
     </div>
+    <script type="text/javascript">
+      function confirm() {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          });
+      }
+    </script>
 </body>
 
 </html>
