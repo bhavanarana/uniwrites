@@ -8,7 +8,7 @@ include "db.php";
 <head>
   <?php include "bootstrap.php";
   ?>
-  <title>Portfolio</title>
+  <title>UniWrites</title>
 </head>
 
 <body>
