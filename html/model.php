@@ -120,7 +120,7 @@ if (isset($_REQUEST['signin'])) {
                 <input type="email" class="form-control" name="email" id=" exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
               </div>
               <div class="mb-3">
-                <input type="password" class="form-control password-input" name="password" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control password-input" name="password" id="exampleInputPassword1" placeholder="Password" required>
               </div>
               <button type="submit" name="signin" class="model-button">Submit</button>
               <p class="signin-link model-text">Don't have an account? <a href="#">Sign Up</a></p>
@@ -131,3 +131,24 @@ if (isset($_REQUEST['signin'])) {
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -80,13 +80,14 @@ if (isset($_REQUEST['id'])) {
                       <form method="POST">
                         <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
                         <a href="view.php?id=<?php echo $value['id'] ?>" class="edit-delete-link float-end">
+                          <!-- <span data-toggle="modal" data-target="#exampleModalCenter"> -->
                           <ion-icon name="trash"></ion-icon>
+                          <!-- </span> -->
                         </a>
                       </form>
                       </p>
                     </div>
                   <?php } ?>
-                  <!-- </div> -->
                   <h5 class="card-title"><?php echo $value['title'] ?></h5>
                   <p class="card-text"><?php echo $value['excerpt'] ?></p>
                   <div class="d-flex justify-content-between">
@@ -103,7 +104,8 @@ if (isset($_REQUEST['id'])) {
 
                     <p>
                       <!-- <small class="test-muted"> -->
-                      <a href="openblog.php" class="edit-delete-link">
+
+                      <a href="openblog.php?id=<?php echo $value['id']; ?>" class="edit-delete-link">
                         <ion-icon size="large" name="arrow-round-forward"></ion-icon>
                       </a>
                       <!-- </small> -->
