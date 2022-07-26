@@ -20,13 +20,13 @@ if (isset($_POST['changepassword'])) {
             header('Location: password.php?info=success');
             die();
           } else {
-            echo "error";
+            header('Location: password.php?info=queryfail');
           }
         } else {
-          echo "password does not match";
+          header('Location: password.php?info=passmismatched');
         }
       } else {
-        echo "Current password is incorrect";
+        header('Location: password.php?info=currmismatched');
       }
     }
   }
@@ -41,9 +41,31 @@ if (isset($_POST['changepassword'])) {
 </head>
 
 <body>
-  <?php include 'nav.php' ?>
-  <div class="container">
-    <form action="" method="POST">
+  <form action="" method="POST">
+    <?php include 'nav.php' ?>
+    <div class="container">
+      <?php if ($_REQUEST['info']) { ?>
+        <?php if ($_REQUEST['info'] == 'success') { ?>
+          <div class="alert alert-success" role="alert">
+            Password is Successfully changed!
+          </div>
+        <?php } ?>
+        <?php if ($_REQUEST['info'] == 'queryfail') { ?>
+          <div class="alert alert-success" role="alert">
+            Oops Try Again Later!
+          </div>
+        <?php } ?>
+        <?php if ($_REQUEST['info'] == 'passmismatched') { ?>
+          <div class="alert alert-success" role="alert">
+            Your new Password mismatched with Confirm Password!
+          </div>
+        <?php } ?>
+        <?php if ($_REQUEST['info'] == 'currmismatched') { ?>
+          <div class="alert alert-success" role="alert">
+            Your Current Password is Incorrect!
+          </div>
+        <?php } ?>
+      <?php } ?>
       <label for="inputPassword" class="col-sm-2 mt-5 col-form-label">Current Password</label>
       <div class="col-sm-10">
         <input type="password" name="oldpassword" class="form-control" id="inputPassword" required>
@@ -56,12 +78,12 @@ if (isset($_POST['changepassword'])) {
       <div class="col-sm-10">
         <input type="password" name="confirmpassword" class="form-control" id="inputPassword" required>
       </div>
-  </div>
-  <div class="d-flex justify-content-center mt-4">
-    <input type="submit" name="changepassword" value="Submit">
-    <!-- <button type="button" name="" class="btn btn-primary mt-3">Change Password</button> -->
-  </div>
-  </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <input type="submit" name="changepassword" value="Submit">
+      <!-- <button type="button" name="" class="btn btn-primary mt-3">Change Password</button> -->
+    </div>
+    </div>
   </form>
 </body>
 
