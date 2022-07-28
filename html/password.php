@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db.php';
-if (isset($_POST['changepassword'])) {
+if (isset($_POST['submit'])) {
   $oldpass = $_POST['oldpassword'];
   $newpass = $_POST['newpassword'];
   $confirmpass = $_POST['confirmpassword'];
@@ -41,9 +41,9 @@ if (isset($_POST['changepassword'])) {
 </head>
 
 <body>
-  <form action="" method="POST">
-    <?php include 'nav.php' ?>
-    <div class="container">
+  <?php include 'nav.php' ?>
+  <div class="container">
+    <form id="change-form" method="POST">
       <?php if ($_REQUEST['info']) { ?>
         <?php if ($_REQUEST['info'] == 'success') { ?>
           <div class="alert alert-success" role="alert">
@@ -78,13 +78,16 @@ if (isset($_POST['changepassword'])) {
       <div class="col-sm-10">
         <input type="password" name="confirmpassword" class="form-control" id="inputPassword" required>
       </div>
-    </div>
-    <div class="d-flex justify-content-center mt-4">
-      <input type="submit" name="changepassword" value="Submit">
-      <!-- <button type="button" name="" class="btn btn-primary mt-3">Change Password</button> -->
-    </div>
-    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <!-- <input type="submit" name="changepassword" value="Submit"> -->
+    <!-- <input type="submit" class="btn btn-primary button mt-4" name="submit" value="Change Password"> -->
+    <button type="submit" name="submit" class="model-button" id="change-form">Submit</button>
+
+    <!-- <button type="button" name="" class="btn btn-primary mt-3">Change Password</button> -->
+  </div>
   </form>
+  </div>
 </body>
 
 </html>

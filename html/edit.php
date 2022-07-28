@@ -13,7 +13,6 @@ if (isset($_REQUEST['submit'])) {
   $description = mysqli_real_escape_string($conn, $disc);
   $excerpt = $_REQUEST['excerpt'];
   $img = $_FILES['image_thumb']; //access image
-  print_r($img);
   $img_size = $img['size']; // image size
   $img_name = $img['name']; // acess name of image
   $img_temp_name = $img['tmp_name']; // acess path of image store temporary
@@ -77,30 +76,44 @@ if (isset($_REQUEST['submit'])) {
         </div>
       <?php } ?>
     <?php } ?>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <?php foreach ($fetch_details as $value) { ?>
-        <div class="mb-3">
-          <h1 class="add-heading">Edit Your Blog</h1>
-          <input type="text" hidden name="id" value="<?php echo $value['id'] ?>">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" name="title" class="title" value="<?php echo $value['title']; ?>">
-        </div>
-        <div class="mb-3">
-          <label for="desc" class="form-label">Description</label>
-          <textarea class="form-control" class="desc" name="desc" rows="3"><?php echo $value['description']; ?></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="excerpt" class="form-label">Excerpt</label>
-          <textarea class="form-control" id="text-desc" name="excerpt" rows="2" cols="50" required><?php echo $value['excerpt']; ?></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="Image_thumb" class="form-label">Upload Image</label>
-          <input type="file" class="form-control" name="image_thumb" class="title">
-        </div>
-        <input type="submit" class="btn btn-primary button mt-4" name="submit" value="Save">
-      <?php } ?>
-    </form>
+    <div class="add-container">
+
+      <form action="" method="POST" enctype="multipart/form-data">
+        <?php foreach ($fetch_details as $value) { ?>
+          <div class="mb-3">
+            <h1 class="add-heading">Edit Your Blog</h1>
+            <input type="text" hidden name="id" value="<?php echo $value['id'] ?>">
+            <label for="title" class="form-label input-headers">Title</label>
+            <input type="text" class="form-control" name="title" class="title" value="<?php echo $value['title']; ?>">
+          </div>
+          <div class="mb-3">
+            <label for="desc" class="form-label input-headers">Description</label>
+            <textarea class="form-control" class="desc" name="desc" rows="6"><?php echo $value['description']; ?></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="excerpt" class="form-label input-headers">Excerpt<span class="input-header-div"> (Max characters:150)</span></label>
+            <textarea class="form-control" id="text-desc" name="excerpt" rows="2" cols="50" onkeyup="limit(this);" required><?php echo $value['excerpt']; ?></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="Image_thumb" class="form-label input-headers">Upload Image</label>
+            <input type="file" class="form-control" name="image_thumb" class="title">
+          </div>
+          <input type="submit" class="btn btn-primary button mt-4" name="submit" value="Save">
+        <?php } ?>
+      </form>
+    </div>
   </div>
+  <script>
+    $("#title_focus").focus();
+
+    function limit(element) {
+      var max_chars = 100;
+
+      if (element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+      }
+    }
+  </script>
 </body>
 
 </html>

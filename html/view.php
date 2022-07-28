@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'db.php';
+$count = 0;
 $select = "SELECT * FROM entries WHERE delete_status='0'";
 $query_select = mysqli_query($conn, $select);
 if (!$query_select) {
@@ -26,8 +27,17 @@ if (isset($_REQUEST['id'])) {
 <body>
   <?php include 'nav.php'; ?>
   <div class="container">
-    <div class="row">
-      <h1 class="view-heading">Blogs</h1>
+    <div class="add-button-position mt-1">
+      <a href="add.php">
+        <span>
+          <ion-icon name="add-circle" class="add-button size=" large"></ion-icon>
+        </span>
+      </a>
+    </div>
+    <div class="row mt-5 ">
+      <div>
+        <h1 class="add-heading ">Blogs</h1>
+      </div>
     </div>
     <?php if (isset($_REQUEST['result'])) { ?>
       <?php if ($_REQUEST['result'] == 'deleted') { ?>
@@ -55,83 +65,78 @@ if (isset($_REQUEST['id'])) {
         </div>
       <?php } ?>
     <?php } ?>
-    <div class="row">
+    <div class="row mt-4">
       <?php foreach ($query_select as $value) { ?>
-        <div class="col-lg-6 " style="max-width: 680px;">
-          <div class="card mb-3">
-            <div class="row g-0">
-              <div class="col-md-3">
+        <div class="col-lg-4">
+          <a href="openblog.php?id=<?php echo $value['id']; ?>" class="edit-delete-link">
+            <div class="card mt-4">
+              <div class="card__header">
                 <?php if ($value['image_url'] != null) { ?>
-                  <img class="view-img" src="../uploads/<?php echo $value['image_url'] ?>" class="img-fluid rounded-start">
+                  <img class="card__image img-fluid" width="600" src="../uploads/<?php echo $value['image_url'] ?>">
                 <?php } ?>
                 <?php if ($value['image_url'] == null) { ?>
-                  <img class="view-img" src="../default.png" class="img-fluid rounded-start">
+                  <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600">
                 <?php  } ?>
               </div>
-              <div class="col-md-9">
-                <div class="card-body">
-                  <!-- <div class="d-flex justify-content-between"> -->
-                  <?php if ($_SESSION['user_id'] == $value['user_id']) { ?>
-                    <div class="wrapper" style="margin-top: -15px;">
-                      <p class="d-flex float-end">
-                        <a href="edit.php?id=<?php echo $value['id'] ?>" class="edit-delete-link">
-                          <ion-icon name="create"></ion-icon>
-                        </a>
-                      <form method="POST">
-                        <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
-                        <a onClick="confirm()" class="edit-delete-link float-end me-1">
-                          <ion-icon name="trash"></ion-icon>
-                        </a>
-                      </form>
-                      </p>
+              <div class="card__body">
+                <h4 class="card-title"><?php echo $value['title'] ?></h4>
+                <p><?php echo $value['excerpt'] ?></p>
+              </div>
+              <div class="card__footer">
+                <div class="user">
+                  <div class="user__info">
+                    <div>
+                      <small><?php
+                              $timestamp = $value['timestamp'];
+                              $datetime = explode(" ", $timestamp);
+                              $date = $datetime[0];
+                              $date_format = date('F j, Y', strtotime($date)); //used for changing date format
+                              // print_r($date_format);
+                              echo $date_format;
+                              ?></small>
+
                     </div>
-                    <script type="text/javascript">
-                      function confirm() {
-                        swal({
-                            title: "Are you sure?",
-                            text: "Once deleted, you will not be able to recover this imaginary file!",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                          })
-                          .then((willDelete) => {
-                            if (willDelete) {
-                              window.location = "view.php?id=<?php echo $value['id'] ?>";
-                              swal("Post has been Deleted!", {
-                                icon: "success",
+                    <div class="icons">
+                      <?php if ($_SESSION['user_id'] == $value['user_id']) { ?>
+                        <div class="wrapper" style="margin-top: -15px;">
+                          <p class="d-flex float-end">
+                            <a href="edit.php?id=<?php echo $value['id'] ?>" class="edit-delete-link">
+                              <ion-icon name="create"></ion-icon>
+                            </a>
+                          <form method="POST">
+                            <input type="text" hidden name="id" value="<?php echo $value['id']; ?>">
+                            <a onClick="confirm()" class="edit-delete-link float-end me-1">
+                              <ion-icon name="trash"></ion-icon>
+                            </a>
+                          </form>
+                          </p>
+                        </div>
+                        <script type="text/javascript">
+                          function confirm() {
+                            swal({
+                                title: "Are you sure?",
+                                text: "Once deleted, you will not be able to recover this Blog!",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                              })
+                              .then((willDelete) => {
+                                if (willDelete) {
+                                  window.location = "view.php?id=<?php echo $value['id'] ?>";
+                                  swal("Post has been Deleted!", {
+                                    icon: "success",
+                                  });
+                                }
                               });
-                            }
-                          });
-                      }
-                    </script>
-                  <?php } ?>
-                  <h5 class="card-title"><?php echo $value['title'] ?></h5>
-                  <p class="card-text"><?php echo $value['excerpt'] ?></p>
-                  <div class="d-flex justify-content-between">
-                    <p class="card-text"><small class="text-muted">
-                        <?php
-                        $timestamp = $value['timestamp'];
-                        $datetime = explode(" ", $timestamp);
-                        $date = $datetime[0];
-                        $date_format = date('F j, Y', strtotime($date)); //used for changing date format
-                        // print_r($date_format);
-                        echo $date_format;
-                        ?>
-                      </small></p>
-
-                    <p>
-                      <!-- <small class="test-muted"> -->
-
-                      <a href="openblog.php?id=<?php echo $value['id']; ?>" class="edit-delete-link">
-                        <ion-icon size="large" name="arrow-round-forward"></ion-icon>
-                      </a>
-                      <!-- </small> -->
-                    </p>
+                          }
+                        </script>
+                      <?php } ?>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       <?php } ?>
     </div>

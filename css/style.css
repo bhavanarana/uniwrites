@@ -38,6 +38,15 @@ body {
 .login-selector {
   width: 233px;
 }
+.add-heading{
+  font-weight:600;
+  font-size:48px;
+  text-align: center;
+  background: -webkit-linear-gradient(top left, #ec08ee, #08bef0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
 .nav-tabs .nav-link.active {
   background-color: orangered !important;
   border-radius: 10px;
@@ -127,6 +136,38 @@ button[disabled] {
   background-color: #cccccc;
   color: #666666;
 }
+.signup-success{
+  width:300px;
+  margin:0 auto;
+  border-radius:10px !important;
+}
+.add-container{
+width:750px ;
+margin:0 auto;
+}
+.input-headers{
+  font-weight:500;
+  font-size:18px;
+}
+.input-fields{
+  background: #FFFFFF;
+  box-shadow: 3px 4px 10px rgba(135, 135, 135, 0.25);
+  border-radius: 10px;
+
+}
+
+.input-height{
+  height:50px;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  outline:none !important;
+}
+.input-header-div{
+  font-weight: 400;
+  font-size:14px;
+}
 .view-img {
   width: 130px;
   height: 110px;
@@ -139,9 +180,11 @@ button[disabled] {
 .edit-delete-link {
   text-decoration: none;
   color: grey;
+  z-index:10;
 }
 .edit-delete-link :hover {
-  color: orangered;
+  /* color: orangered; */
+  cursor:pointer;
 }
 .view-icon-size {
   width: 100px !important;
@@ -153,4 +196,127 @@ ion-icon {
 .view-heading {
   text-align: center;
   margin-top: 50px !important;
+}
+.navbar-item-hover:hover{
+
+  color:  #0f62fe !important;
+}
+.navbar-item-hover{
+  font-weight:500;
+}
+.add-button{
+font-size:45px;
+}
+.add-button-position{
+  float:right;
+}
+
+
+/* Code for cards */
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
+
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+.tag-brown {
+  background: #D1913C;
+background: linear-gradient(to bottom, #FFD194, #D1913C);
+  color: #fafafa;
+}
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.user {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image {
+  border-radius: 50%;
+}
+
+.user__info > small {
+  color: #666;
+}
+.card{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height:500px;
+  position:absolute;
+}
+.icons{
+position:relative;
+margin-top:30px;
+margin-left:-5px;
+width:50px;
+}
+.blog-title{
+  font-family: 'Playfair Display', serif;
+  font-size:42px;
+  font-weight:700;
+}
+.blog-container{
+  width:800px !important;
+}
+.blog-desc{
+  margin-top:80px;
+font-size:19px;
+line-height: 1.8;
+}
+.blog-image{
+  text-align: center !important;
 }
