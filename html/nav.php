@@ -27,8 +27,10 @@ session_start();
                 <?php echo $_SESSION['letter'] ?>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <!-- <li><a class="dropdown-item" href="#">View your Blogs</a></li> -->
-                <li><a class="dropdown-item" href="add.php">Add Blog</a></li>
+                <li><a class="dropdown-item" href="add.php">Add your Blogs</a></li>
+                <li><a class="dropdown-item" href="password.php">Change Password</a></li>
+
+
                 <li><a class="dropdown-item" href="#">
                     <form method="POST">
                       <input type="submit" name="logout" value="Logout" class="btn btn-danger">
