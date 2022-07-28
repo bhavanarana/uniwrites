@@ -9,6 +9,7 @@ if (isset($_POST['changepassword'])) {
     $id = $_SESSION['user_id'];
     $query = "SELECT * FROM user_credential WHERE id=$id";
     $select_query = mysqli_query($conn, $query);
+
     foreach ($select_query as $value) {
       $match_password = password_verify($oldpass, $value['password']);
       if ($match_password) {
@@ -41,7 +42,7 @@ if (isset($_POST['changepassword'])) {
 </head>
 
 <body>
-  <form action="" method="POST">
+  <form method="POST">
     <?php include 'nav.php' ?>
     <div class="container">
       <?php if ($_REQUEST['info']) { ?>
@@ -68,23 +69,24 @@ if (isset($_POST['changepassword'])) {
       <?php } ?>
       <label for="inputPassword" class="col-sm-2 mt-5 col-form-label">Current Password</label>
       <div class="col-sm-10">
-        <input type="password" name="oldpassword" class="form-control" id="inputPassword" required>
+        <input type="password" name="oldpassword" class="form-control" id="inputPassword0" required>
       </div>
       <label for="inputPassword" class="col-sm-2 col-form-label">New Password</label>
       <div class="col-sm-10">
-        <input type="password" name="newpassword" class="form-control" id="inputPassword" required>
+        <input type="password" name="newpassword" class="form-control" id="inputPassword1" required>
       </div>
       <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
       <div class="col-sm-10">
-        <input type="password" name="confirmpassword" class="form-control" id="inputPassword" required>
+        <input type="password" name="confirmpassword" class="form-control" id="inputPassword2" required>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4">
+        <!-- <input type="submit" name="changepassword" value="Submit"> -->
+        <button type="submit" name="changepassword" class="btn btn-primary mt-3">Change Password</button>
       </div>
     </div>
-    <div class="d-flex justify-content-center mt-4">
-      <input type="submit" name="changepassword" value="Submit">
-      <!-- <button type="button" name="" class="btn btn-primary mt-3">Change Password</button> -->
-    </div>
-    </div>
   </form>
+  </div>
 </body>
 
 </html>
