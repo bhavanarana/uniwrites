@@ -23,7 +23,9 @@ include "db.php";
     <p class="sub-title-head col-12">Discover stories, thinking, and expertise from writers on any topic.</p>
 
     <?php if (!empty($_SESSION['username'])) { ?>
-      <button class="mt-5 nav-button col-2">Welcome</button>
+      <a href="view.php">
+        <button class="mt-5 nav-button col-2">Welcome</button>
+      </a>
     <?php } else { ?>
       <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="mt-5 nav-button col-2">Sign In / Sign Up</button>
     <?php } ?>

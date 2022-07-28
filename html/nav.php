@@ -12,13 +12,13 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item nav-home">
-          <a class="nav-link active ms-4" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active navbar-item-hover ms-4" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item nav-about">
-          <a class="nav-link active ms-4" aria-current="page" href="view.php">Blog</a>
+          <a class="nav-link active navbar-item-hover ms-4" aria-current="page" href="view.php">Blog</a>
         </li>
         <li class="nav-item nav-services">
-          <a class="nav-link active ms-4" aria-current="page" href="#services">About Us</a>
+          <a class="nav-link active navbar-item-hover ms-4" aria-current="page" href="#services">About Us</a>
         </li>
         <?php if (!empty($_SESSION['username'])) { ?>
           <li>
@@ -27,8 +27,8 @@ session_start();
                 <?php echo $_SESSION['letter'] ?>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">View your Blogs</a></li>
-                <li><a class="dropdown-item" href="add.php">Add your Blogs</a></li>
+                <!-- <li><a class="dropdown-item" href="#">View your Blogs</a></li> -->
+                <li><a class="dropdown-item" href="add.php">Add Blog</a></li>
                 <li><a class="dropdown-item" href="#">
                     <form method="POST">
                       <input type="submit" name="logout" value="Logout" class="btn btn-danger">
